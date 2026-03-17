@@ -1,27 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../redux/CartSlice';
-import { RootState } from '../redux/store';
 import { ShoppingCart, Leaf, Wind, HeartPulse } from 'lucide-react';
 
-interface Plant {
-  name: string;
-  image: string;
-  description: string;
-  cost: string;
-}
-
-interface Category {
-  category: string;
-  icon: React.ReactNode;
-  plants: Plant[];
-}
-
-const ProductList: React.FC = () => {
+const ProductList = () => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const cartItems = useSelector((state) => state.cart.items);
 
-  const plantsArray: Category[] = [
+  const plantsArray = [
     {
       category: "Aromatic Plants",
       icon: <Wind className="w-5 h-5" />,
@@ -44,11 +30,11 @@ const ProductList: React.FC = () => {
     }
   ];
 
-  const handleAddToCart = (plant: Plant) => {
+  const handleAddToCart = (plant) => {
     dispatch(addItem(plant));
   };
 
-  const isAdded = (name: string) => cartItems.some(item => item.name === name);
+  const isAdded = (name) => cartItems.some(item => item.name === name);
 
   return (
     <div className="bg-stone-50 min-h-screen pb-20">

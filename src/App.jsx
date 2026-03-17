@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from './redux/store';
 import LandingPage from './components/LandingPage';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import { ShoppingCart, Leaf } from 'lucide-react';
 
 export default function App() {
-  const [view, setView] = useState<'landing' | 'products' | 'cart'>('landing');
-  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const [view, setView] = useState('landing');
+  const cartItems = useSelector((state) => state.cart.items);
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   if (view === 'landing') {

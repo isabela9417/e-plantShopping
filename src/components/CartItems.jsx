@@ -1,15 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from '../redux/CartSlice';
-import { RootState } from '../redux/store';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowLeft } from 'lucide-react';
 
-interface CartProps {
-  onContinueShopping: () => void;
-}
-
-const Cart: React.FC<CartProps> = ({ onContinueShopping }) => {
-  const cart = useSelector((state: RootState) => state.cart.items);
+const Cart = ({ onContinueShopping }) => {
+  const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
   const calculateTotalAmount = () => {
@@ -19,11 +14,11 @@ const Cart: React.FC<CartProps> = ({ onContinueShopping }) => {
     }, 0);
   };
 
-  const handleIncrement = (item: any) => {
+  const handleIncrement = (item) => {
     dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
   };
 
-  const handleDecrement = (item: any) => {
+  const handleDecrement = (item) => {
     if (item.quantity > 1) {
       dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
     } else {
@@ -31,7 +26,7 @@ const Cart: React.FC<CartProps> = ({ onContinueShopping }) => {
     }
   };
 
-  const handleRemove = (item: any) => {
+  const handleRemove = (item) => {
     dispatch(removeItem(item.name));
   };
 

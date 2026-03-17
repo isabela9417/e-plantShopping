@@ -1,10 +1,6 @@
 import React from 'react';
 
-interface LandingPageProps {
-  onStart: () => void;
-}
-
-const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
+const LandingPage = ({ onStart }) => {
   return (
     <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-stone-950">
       {/* Immersive Background Layers */}
