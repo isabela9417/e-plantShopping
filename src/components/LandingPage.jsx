@@ -2,23 +2,10 @@ import React from 'react';
 
 const LandingPage = ({ onStart }) => {
   return (
-    <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-stone-950">
-      {/* Immersive Background Layers */}
+    <div className="background-image relative h-screen w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 z-0">
-        {/* Base Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-40 scale-105" 
-          style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1466781783364-391eaf59cf7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")',
-          }}
-        />
-        
-        {/* Layered Gradients for "Blending" */}
         <div className="absolute inset-0 bg-gradient-to-b from-stone-950/80 via-transparent to-stone-950/90" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.15),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(20,20,20,0.4),transparent_50%)]" />
-        
-        {/* Subtle Grain/Texture Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.2),transparent_70%)]" />
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </div>
       
@@ -44,12 +31,11 @@ const LandingPage = ({ onStart }) => {
           onClick={onStart}
           className="group relative px-12 py-5 bg-emerald-600 text-white hover:bg-emerald-500 transition-all duration-500 rounded-full text-lg font-medium tracking-widest uppercase overflow-hidden animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-1000"
         >
-          <span className="relative z-10">Enter the Garden</span>
+          <span className="relative z-10">Get Started</span>
           <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
         </button>
       </div>
 
-      {/* Decorative Side Text */}
       <div className="absolute bottom-12 left-12 text-white/20 text-[10px] tracking-[0.5em] uppercase vertical-rl rotate-180 font-bold hidden md:block">
         Nature's Pharmacy — Est. 2024
       </div>

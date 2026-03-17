@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '../redux/CartSlice';
-import { ShoppingCart, Leaf, Wind, HeartPulse } from 'lucide-react';
+import { addItem } from '../redux/CartSlice.jsx';
+import { ShoppingCart, Leaf, Wind, HeartPulse, Sparkles } from 'lucide-react';
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,9 @@ const ProductList = () => {
         { name: "Lavender", image: "https://images.unsplash.com/photo-1595908129746-57ca1a63dd4d?auto=format&fit=crop&w=800&q=80", description: "Calming scent for relaxation.", cost: "$15" },
         { name: "Jasmine", image: "https://images.unsplash.com/photo-1534710962475-4a2aa050239b?auto=format&fit=crop&w=800&q=80", description: "Sweet fragrance that lingers.", cost: "$20" },
         { name: "Rosemary", image: "https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=800&q=80", description: "Invigorating aroma for your kitchen.", cost: "$12" },
-        { name: "Mint", image: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80", description: "Fresh and cooling scent.", cost: "$10" }
+        { name: "Mint", image: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80", description: "Fresh and cooling scent.", cost: "$10" },
+        { name: "Thyme", image: "https://images.unsplash.com/photo-1594313049933-206ac787429e?auto=format&fit=crop&w=800&q=80", description: "Earthy aroma, perfect for cooking.", cost: "$11" },
+        { name: "Basil", image: "https://images.unsplash.com/photo-1618164435735-413d3b066c9a?auto=format&fit=crop&w=800&q=80", description: "Peppery and sweet fragrance.", cost: "$9" }
       ]
     },
     {
@@ -25,7 +27,21 @@ const ProductList = () => {
         { name: "Aloe Vera", image: "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&w=800&q=80", description: "Healing properties for skin.", cost: "$12" },
         { name: "Echinacea", image: "https://images.unsplash.com/photo-1588531897513-1c3ab5235030?auto=format&fit=crop&w=800&q=80", description: "Boosts your immune system naturally.", cost: "$18" },
         { name: "Calendula", image: "https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=800&q=80", description: "Soothing for minor skin irritations.", cost: "$14" },
-        { name: "Lemon Balm", image: "https://images.unsplash.com/photo-1615485240384-552e40076c14?auto=format&fit=crop&w=800&q=80", description: "Reduces stress and anxiety.", cost: "$16" }
+        { name: "Chamomile", image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=800&q=80", description: "Promotes better sleep and digestion.", cost: "$13" },
+        { name: "Peppermint", image: "https://images.unsplash.com/photo-1595908129746-57ca1a63dd4d?auto=format&fit=crop&w=800&q=80", description: "Relieves digestive issues.", cost: "$10" },
+        { name: "Sage", image: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80", description: "Antioxidant and anti-inflammatory.", cost: "$12" }
+      ]
+    },
+    {
+      category: "Low Maintenance",
+      icon: <Sparkles className="w-5 h-5" />,
+      plants: [
+        { name: "Snake Plant", image: "https://images.unsplash.com/photo-1593482892290-f54927ae1b6c?auto=format&fit=crop&w=800&q=80", description: "Hardy and air-purifying.", cost: "$25" },
+        { name: "Spider Plant", image: "https://images.unsplash.com/photo-1599598425947-5202ed56419a?auto=format&fit=crop&w=800&q=80", description: "Easy to grow and propagate.", cost: "$18" },
+        { name: "Peace Lily", image: "https://images.unsplash.com/photo-1593691509543-c55fb32e7355?auto=format&fit=crop&w=800&q=80", description: "Elegant white blooms, low light.", cost: "$22" },
+        { name: "Pothos", image: "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&w=800&q=80", description: "Fast-growing vine, very resilient.", cost: "$15" },
+        { name: "ZZ Plant", image: "https://images.unsplash.com/photo-1632203171982-cc0df6e9ceb4?auto=format&fit=crop&w=800&q=80", description: "Thrives on neglect, beautiful waxy leaves.", cost: "$30" },
+        { name: "Jade Plant", image: "https://images.unsplash.com/photo-1509423350716-97f9360b4e5f?auto=format&fit=crop&w=800&q=80", description: "Symbol of good luck, easy care.", cost: "$20" }
       ]
     }
   ];
@@ -58,7 +74,7 @@ const ProductList = () => {
               <div className="flex-grow h-px bg-stone-200" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {category.plants.map((plant, i) => (
                 <div key={i} className="group bg-white rounded-2xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all duration-500">
                   <div className="relative h-64 overflow-hidden">

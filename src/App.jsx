@@ -1,17 +1,23 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import LandingPage from './components/LandingPage';
 import ProductList from './components/ProductList';
-import Cart from './components/Cart';
+import CartItem from './components/CartItem';
+import AboutUs from './components/AboutUs';
 import { ShoppingCart, Leaf } from 'lucide-react';
+import './App.css';
 
 export default function App() {
   const [view, setView] = useState('landing');
   const cartItems = useSelector((state) => state.cart.items);
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
+  const handleGetStartedClick = () => {
+    setView('products');
+  };
+
   if (view === 'landing') {
-    return <LandingPage onStart={() => setView('products')} />;
+    return <LandingPage onStart={handleGetStartedClick} />;
   }
 
   return (
@@ -41,6 +47,13 @@ export default function App() {
             </button>
             
             <button 
+              onClick={() => setView('about')}
+              className={`text-sm font-medium transition-colors ${view === 'about' ? 'text-emerald-600' : 'text-stone-600 hover:text-stone-900'}`}
+            >
+              About Us
+            </button>
+            
+            <button 
               onClick={() => setView('cart')}
               className="relative p-2 text-stone-600 hover:text-stone-900 transition-colors"
             >
@@ -57,11 +70,9 @@ export default function App() {
 
       {/* Main Content */}
       <main className="animate-in fade-in duration-700">
-        {view === 'products' ? (
-          <ProductList />
-        ) : (
-          <Cart onContinueShopping={() => setView('products')} />
-        )}
+        {view === 'products' && <ProductList />}
+        {view === 'about' && <AboutUs />}
+        {view === 'cart' && <CartItem onContinueShopping={() => setView('products')} />}
       </main>
 
       {/* Footer */}
